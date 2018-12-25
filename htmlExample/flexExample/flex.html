@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex Demo</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: #aaa;
+        }
+
+        .container{
+            display: flex;
+            width: 900px;
+            height: 600px;
+            background: #1f1f1f;
+            justify-content: space-between;
+        }
+
+        .dad-base{
+            display: flex;
+            width: 400px;
+            height: 300px;
+            background: #565656;         
+        }
+
+        .dad-flex{
+            /* justify-content: center; */
+            /* align-items: stretch;如果子元素没有设置高度，则会扩展至父容器的高度 */
+            align-items: flex-start;
+        }
+
+        .dad-flex1{
+            background: #a13f2c;
+        }
+
+        .son-flex1{
+            width: 80px;
+            height: 80px;
+            background: #11ff00;
+        }
+        .son-flex2{
+            width: 80px;
+            height: 100px;
+            background: #123121;
+        }
+        .son-flex3{
+            width: 100px;
+            height: 50px;
+            background: #987612;
+        }
+        .son-flex4{
+            width: 240px;
+            height: 320px;
+            background: #657849;
+            flex: 1;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dad-base dad-flex">
+            <div class="son-flex1">80 x 80</div>
+            <div class="son-flex2">80 x 100</div>
+            <div class="son-flex3">100 x 50</div>
+            <div class="son-flex4">240 x 220</div>
+        </div>
+        <div class="dad-base dad-flex1">
+            <div class="son-flex1"></div>
+            <div class="son-flex4">
+                <span>
+                  abcdefghijklmnopqrstuvwxyz1234567890987456123
+                </span>
+                <span>
+                    中国工信出版集团React Native 跨平台移动应用开发
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

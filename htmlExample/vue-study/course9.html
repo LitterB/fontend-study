@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue course 9</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in books" :key="index">
+                <span>name: {{item.name}}</span>
+                <span>price: {{item.price.toFixed(2)}}</span>
+                <span>count: {{item.num}}</span>
+                <br>
+                <input type="button" value="+" @click="item.num += 1">
+                <input type="button" value="-" @click="item.num -= 1">
+            </li>
+        </ul>
+        <p>total price: {{totalPrice}}</p>
+        <!-- <p>{{testData}}</p> -->
+        <input type="button" value="test" @click="testMethod()">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                books: [
+                    {
+                        name: 'Android',
+                        price: 12.00,
+                        num: 0
+                    },{
+                        name: 'IOS',
+                        price: 13.00,
+                        num: 0
+                    },{
+                        name: 'javaScript',
+                        price: 14.00,
+                        num: 0
+                    }
+                ],
+                testData: 0,
+                totalPrice: 0.00
+            },
+            methods: {
+                testMethod: function(){
+                    console.log('testMethod');
+                    this.testData += 1;
+                },
+               /*  totalPrice: function(){
+                    console.log('调用totalPrice()');
+                    var result = 0;
+                    this.books.forEach(book => {
+                        result += book.price * book.num;
+                    });
+                    return result;
+                } */
+            },
+            watch: {
+                books: {
+                    handler: function(val, oldVal){
+                        this.totalPrice = '计算中。。。';
+
+                        var $this = this;
+                        setTimeout(() =>{
+                            $this.totalPrice = 0;
+                            val.forEach(item => {
+                                $this.totalPrice += item.num * item.price;
+                            });
+                        }, 1000)
+                    },
+                    //对象内部的属性监听， 也叫深度监听
+                    deep: true
+                }
+                }
+        });
+    </script>
+</body>
+</html>

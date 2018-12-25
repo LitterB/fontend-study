@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue course 7</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model.lazy="testLazy">
+        <p>{{testLazy}}</p>
+        <br>
+        <input type="number" v-model.number="testNumber">
+        <p>{{testNumber}}</p>
+        <br>
+        <input type="text" v-model.trim="testTrim">
+        <p>{{testTrim}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                testLazy: '',
+                testNumber: '',
+                testTrim: ''
+            }
+        });
+    </script>
+</body>
+</html>

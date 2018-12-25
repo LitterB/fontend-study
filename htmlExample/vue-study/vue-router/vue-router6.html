@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue 导航守卫</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <router-link to="/one">one</router-link>
+            <router-link to="/two">two</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+</body>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        var one = {
+            template: '<div>One view</div>',
+            beforeRouteEnter(to, from, next){
+                //does NOT have access to `this` component instance}
+                console.log("beforeRouteEnter");
+                next();
+            },
+            beforeRouteUpdate(to, from, next){
+                console.log("beforeRouterUpdate");
+            },
+            beforeRouterLeave(to, from, next){
+                console.log("beforeRouteLeave");
+                next();
+            }
+        }
+
+        var two = {
+            template: '<div>Two view</div>'
+        }
+
+        var routes = [
+            {
+                path: '/one',
+                component: one,
+                beforeEnter: (to, from, next) => {
+                    console.log("beforeEnter");
+                    next();
+                }
+            },
+            {
+                path: '/two',
+                component: two
+            }
+        ];
+
+        var router = new VueRouter({
+            routes: routes
+        });
+
+        router.beforeEach((to, from, next) => {
+            console.log("beforeEach");
+            next();
+        });
+
+        router.afterEach((to, from) => {
+            console.log("afterEach");
+        })
+
+        var vm = new Vue({
+            router: router,
+            el: '#app'
+        })
+    </script>
+</html>

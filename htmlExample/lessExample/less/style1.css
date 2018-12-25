@@ -1,0 +1,49 @@
+.bordered {
+  border-top: dotted 2px red;
+  border-bottom: solid 2px yellowgreen;
+}
+#header {
+  width: 100px;
+  height: 200px;
+  border-top: dotted 2px red;
+  border-bottom: solid 2px yellowgreen;
+  color: green;
+}
+#header .navigation {
+  font-size: 16px;
+}
+#header .logo {
+  width: 50px;
+  border-top: dotted 2px red;
+  border-bottom: solid 2px yellowgreen;
+}
+.component {
+  width: 300px;
+  color: #f6430f;
+  background-color: #f8b38d;
+}
+@media (min-width: 768px) {
+  .component {
+    width: 600px;
+  }
+}
+@media (min-width: 768px) and (min-resolution: 192dpi) {
+  .component {
+    background: green;
+  }
+}
+@media (min-width: 1280px) {
+  .component {
+    width: 800px;
+  }
+}
+#header a {
+  color: orange;
+  padding: 20px;
+  display: block;
+  border: 1px solid black;
+  background-color: gray;
+}
+#header a:hover {
+  background-color: white;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue router example 3</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            I'am the App content
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script type="text/x-template" id="sup">
+        <div>
+            <p>
+                I'am the Sub content
+            </p>
+            <router-link to="/sub1">sub1</router-link>
+            <router-link to="/sub2">sub2</router-link>
+            <router-view></router-view>
+        </div>
+    </script>
+    <script>
+        var sup = {
+            template: '#sup'
+        }
+
+        var sub1 = {
+            template: '<div>I am sub1</div>'
+        }
+
+        var sub2 = {
+            template: '<div>I am sub2</div>'
+        }
+
+        var routes = [
+            {
+                path: '/',
+                component: sup,
+                children: [
+                    {
+                        path: 'sub1',
+                        component: sub1
+                    },{
+                        path: 'sub2',
+                        component: sub2
+                    }
+                ]
+            }
+        ];
+
+        var router = new VueRouter({
+            routes: routes
+        });
+
+        var vm = new Vue({
+            el: '#app',
+            router: router
+        });
+    </script>
+</body>
+</html>

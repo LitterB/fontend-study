@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue Course 6</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputMessage">
+        <p>{{inputMessage}}</p>
+        <br>
+        <textarea name="" id="" cols="30" rows="10" v-model="textareaMessage"></textarea>
+        <p>{{textareaMessage}}</p>
+        <div>
+            <input type="checkbox" id="android" value="android" v-model="checkedMessage">
+            <label for="android">android</label>
+            <input type="checkbox" id="ios" value="ios" v-model="checkedMessage">
+            <label for="ios">ios</label>
+            <input type="checkbox" id="javaScript" value="javaScript" v-model="checkedMessage">
+            <label for="javaScript">javaScript</label>
+            <br>
+            <p>checked message: {{checkedMessage}}</p>
+        </div>
+        <br>
+        <div>
+            <input type="radio" id="javaScript" value="javaScript" name="testRadio" v-model="radioMessage">
+            <label for="javaScript">javaScript</label>
+            <br>
+            <input type="radio" name="testRadio" id="Vue" value="Vue" v-model="radioMessage">
+            <label for="Vue">Vue</label>
+            <br>
+            <p>radio message: {{radioMessage}}</p>
+            <br>
+            <select name="" id="" v-model="selectedMessage" multiple style="width: 100px">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            <br>
+            <span>selected message: {{selectedMessage}}</span>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                inputMessage: 'this is default input message',
+                textareaMessage: 'this is default textarea message',
+                checkedMessage: [],
+                radioMessage: '',
+                selectedMessage: []
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue course 5</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p class="test" :class="{'red': isActive, 'big-font': isBig}">test1</p>
+        <p class="test" :class="testClassObject">test2</p>
+        <p class="test" :class="[classBlue, bigFont]">test3</p>
+        <p class="test" :class="[isBlue ? classBlue : classYellow]">test4</p>
+        <p class="test" :class="[{classBlue: isBlue}, testClassObject]">test5</p>
+        <p style="font-weight: bold" :style="{color: styleRedColor, fontSize: styleFontSize + 'px'}">test6</p>
+        <p style="font-weight: bold" :style="testStyle">test7</p>
+        <p style="font-weight: bold" :style="isActive ? 'color: red' : 'color:blue'">test8</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isBig: false,
+                testClassObject: {
+                    blue: true,
+                    'big-font': true
+                },
+                classBlue: 'blue',
+                classYellow: 'yellow',
+                isBlue: false,
+                bigFont: 'big-font',
+                styleRedColor: 'red',
+                styleFontSize: 18,
+                styleFontLighter: 'lighter',
+                testStyle: {
+                    color: 'red',
+                    fontSize: '18px',
+                    'font-weight': 'lighter',
+                    display: ['-webkit-box', '-ms-flexbox', 'flex']
+                }
+            }
+        })
+    </script>
+</body>
+</html>

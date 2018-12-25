@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue router example 1</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <router-link to="/one">one</router-link>
+            <router-link to="/two">two</router-link>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        var one = {
+            template: '<div>one view</div>'
+        }
+
+        var two = {
+            template: '<div>two view</div>'
+        }
+
+        var routes = [
+            {
+                path: '/one',
+                component: one
+            },{
+                path: '/two',
+                component: two
+            }
+        ];
+
+        var router = new VueRouter({
+            routes: routes
+        });
+
+        var vm = new Vue({
+            router: router,
+            el: '#app'
+        });
+    </script>
+</body>
+</html>

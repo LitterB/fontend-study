@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue course 2</title>
+</head>
+<body>
+    <div id="app">
+        <span>{{message + new Date().getTime()}}</span>
+        <span v-bind:title="spanTitle">I'm a span</span>
+        <div v-if="isIf === 1">
+            <img v-bind:src="imgSrc" v-bind:alt="imgAlt">
+        </div>
+        <div v-else-if="2">
+            when the isIf equals 2 show: {{isIf}}
+        </div>
+        <div v-else>
+            when the isIf is not 1 or 2 show: {{isIf}}
+        </div>
+        <div v-show="isShow">
+            when the isShow equals true show: {{isShow}}
+        </div>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "Hello Vue!",
+                spanTitle: "I'm a span title",
+                imgAlt: "I'm a img",
+                imgSrc: 'https://images.unsplash.com/photo-1543545342-eeb71c9a7407?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cf15f8e35cfcf5ceb4adc69aecca59ff&auto=format&fit=crop&w=500&q=60',
+                isIf: 1,
+                isShow: false
+            }
+        })
+    </script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+     </style>
+</body>
+</html>

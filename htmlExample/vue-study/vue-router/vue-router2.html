@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue router example 2</title>
+</head>
+<body>
+    <div id="app">
+        <p>
+            <router-link to="/one">one</router-link>
+            <router-link to="/user/123">user</router-link>
+            <a href="#" @click="toNameClick">pass name jump to user</a>
+            <a href="#" @click="toPathClick">pass path jump to user</a>
+        </p>
+        <router-view></router-view>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        var one = {
+            template: '<div>one view</div>'
+        }
+
+        var user = {
+            template: '<div>User view <p>$route.params: {{$route.params}}</p></div>'
+        }
+
+        var routes = [
+            {
+                path: '/one',
+                component: one
+            },{
+                path: '/user/:id',
+                name: 'user',
+                component: user
+            }
+        ];
+
+        var router = new VueRouter({
+            routes: routes
+        });
+
+        var vm = new Vue({
+            router: router,
+            el: '#app',
+            methods: {
+                toNameClick: function(){
+                    this.$router.push({
+                        name: 'user',
+                        params: {
+                            id: '456'
+                        }
+                    });
+                },
+                toPathClick: function(){
+                    this.$router.push({
+                        path: '/user/789',
+                        query: {
+                            id: '101112'
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue course 3</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in items" v-if="item.isShow" v-bind:key="index">
+                <p>{{index}}</p>
+                <p>{{item.name}}</p>
+                <p>￥{{item.price}}</p>
+            </li>
+        </ul>
+        <ul>
+            <li v-for="(value, key, index) in dataSource" v-bind:key="index">
+                <p>
+                    {{index}}.{{key}}:{{value}}
+                </p>
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                items: [
+                    {
+                        name: 'android',
+                        price: '12.00',
+                        isShow: true
+                    },
+                    {
+                        name: 'js',
+                        price: '13.00',
+                        isShow: true
+                    }
+                ],
+                dataSource: {
+                    name: 'Vue',
+                    price: '12.99',
+                    type: 'javaScript'
+                }
+            }
+        })
+        /**
+        *   由于JavaScript的限制，Vue不能检测到对象属性的添加或删除，
+        *   Vue可以检测的变化
+        *   现有数据字段的变化：item[0].isShow = false;
+        *   通过Vue.set(object, key, value)的方式添加的属性
+        *   通过Vue.delete(object, key)的方式删除的属性
+        *   push() pop() shift() unshift() splice() sort() reverse() filter() concat() slice()
+        *   
+        *   Vue无法检测到的变化
+        *   利用索引去设置新的数据时： items[indexOfItem] = newItem;
+        *   直接修改数组的长度时： items.length = newLength;
+        *   直接去添加或删除对象的属性：app.dataSource.newKey = 'newKey'
+        */
+    </script>
+</body>
+</html>
